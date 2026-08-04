@@ -1,169 +1,256 @@
 # AI-Enabled Waste Segregation and Monitoring System
 
-An intelligent waste management system that combines **Artificial Intelligence**, **Computer Vision**, and the **Internet of Things (IoT)** to automate waste segregation and optimize waste collection.
+An intelligent waste management system that leverages **Artificial Intelligence (AI)**, **Computer Vision**, and the **Internet of Things (IoT)** to automate waste segregation and optimize waste collection through real-time monitoring.
 
-This project was developed as a research initiative and later published as a book chapter in *Advances in Electronics and Communication Systems: Design, Applications, and Emerging Technologies (Volume 6, 2026)*.
+📖 **Research Publication:** This project has been published as a peer-reviewed book chapter titled **"Design and Implementation of an AI-Enabled Waste Segregation and Monitoring System"** in *Advances in Electronics and Communication Systems: Design, Applications, and Emerging Technologies (Volume 6, 2026)* published by **Iterative International Publishers (IIP)**.
 
----
+**🔗 DOI:** https://doi.org/10.58532/nbennurAECSB1P1C4
 
-## Overview
-
-Traditional waste management systems rely heavily on manual segregation and fixed garbage collection schedules. These approaches are inefficient, increase operational costs, reduce recycling efficiency, and expose sanitation workers to hazardous waste.
-
-This project addresses these challenges by integrating **AI-powered waste classification** with **IoT-based bin monitoring** to create an automated and intelligent waste management solution.
+**📄 Book Chapter (PDF):** [Read the Published Chapter](./Chapter%20submission.pdf)
 
 ---
 
-## Problem Statement
+# Overview
 
-Modern cities generate enormous amounts of municipal waste every day. Manual segregation is slow, expensive, and often inaccurate, while garbage collection vehicles frequently follow fixed routes regardless of whether bins are full or empty.
+Rapid urbanization has significantly increased municipal solid waste generation, making efficient waste management a critical challenge. Traditional waste segregation is largely manual, resulting in slow processing, poor recycling efficiency, increased operational costs, and health risks for sanitation workers.
 
-The objective of this project is to automate waste segregation and enable real-time monitoring of waste bins to improve recycling efficiency and optimize collection operations.
-
----
-
-## Solution
-
-The proposed system consists of two major modules:
-
-### AI-Based Waste Segregation
-
-A camera captures images of incoming waste.
-
-A deep learning model running on the **NVIDIA Jetson Nano** classifies waste into:
-
-* Dry Waste
-* Wet Waste
-* Plastic Waste
-* Glass Waste
-
-Based on the prediction, servo motors automatically direct the waste into the appropriate compartment.
-
-### IoT-Based Waste Monitoring
-
-An ultrasonic sensor continuously measures the fill level of the waste bin.
-
-Once the bin reaches the configured threshold, the **SIM800C GSM module** automatically sends an alert to the responsible authority, ensuring waste is collected only when necessary.
+This project presents an AI-powered smart waste segregation system integrated with IoT-based monitoring to automate waste classification and optimize waste collection. The system combines deep learning-based computer vision with embedded hardware to provide an intelligent, scalable, and cost-effective solution for modern smart cities.
 
 ---
 
-## Features
+# Problem Statement
 
-* AI-powered real-time waste classification
-* Edge AI inference using NVIDIA Jetson Nano
-* Automatic waste segregation using servo motors
-* Real-time waste level monitoring
-* GSM-based SMS and call notifications
-* Low-cost and scalable architecture
-* Suitable for Smart City deployments
+Conventional waste management suffers from several limitations:
+
+- Manual waste segregation is slow and labor-intensive.
+- Mixed waste reduces recycling efficiency.
+- Overflowing bins create unhygienic public environments.
+- Collection vehicles often follow fixed schedules instead of actual waste levels.
+- Sanitation workers are exposed to hazardous materials.
+
+The objective of this project is to develop an intelligent system capable of:
+
+- Automatically classifying waste using AI.
+- Segregating waste without human intervention.
+- Monitoring dustbin fill levels in real time.
+- Sending automatic notifications when bins become full.
 
 ---
 
-## System Architecture
+# Proposed Solution
 
+The proposed system consists of two integrated modules:
+
+## AI-Based Waste Segregation
+
+A USB camera captures images of incoming waste items.
+
+Using a Deep Learning model deployed on the **NVIDIA Jetson Nano**, the system classifies waste into:
+
+- Dry Waste
+- Wet Waste
+- Plastic Waste
+- Glass Waste
+
+Once classified, servo motors automatically rotate the waste container and direct the waste into the appropriate compartment.
+
+---
+
+## IoT-Based Waste Monitoring
+
+The monitoring module continuously measures the fill level of the dustbin using an **HC-SR04 Ultrasonic Sensor** connected to an **Arduino Uno**.
+
+When the waste level reaches the configured threshold (90–100%), the **SIM800C GSM Module** automatically sends an SMS alert (or phone call) to the responsible authority requesting waste collection.
+
+This enables:
+
+- Smart waste collection
+- Reduced fuel consumption
+- Optimized collection routes
+- Prevention of overflowing bins
+
+---
+
+# Features
+
+- AI-powered waste classification
+- Computer Vision-based object recognition
+- Edge AI inference using NVIDIA Jetson Nano
+- Automatic waste segregation using servo motors
+- Real-time waste level monitoring
+- GSM-based SMS notifications
+- Low-cost and scalable architecture
+- Suitable for Smart City deployments
+- Reduced human intervention
+- Improved recycling efficiency
+
+---
+
+# System Architecture
+
+```text
+                    USB Camera
+                         │
+                         ▼
+                NVIDIA Jetson Nano
+                         │
+               PyTorch CNN Model
+                         │
+               Waste Classification
+                         │
+                  Servo Motor Control
+                         │
+              Automatic Waste Segregation
+
+────────────────────────────────────────────────────
+
+              HC-SR04 Ultrasonic Sensor
+                         │
+                    Arduino Uno
+                         │
+                 SIM800C GSM Module
+                         │
+               SMS / Call Notification
+                         │
+              Municipal Authorities
 ```
-Camera
-   │
-   ▼
-Jetson Nano
-   │
-Deep Learning Model (PyTorch)
-   │
-Waste Classification
-   │
-Servo Motor Control
-   │
-Waste Segregation
-──────────────────────────────────
-Ultrasonic Sensor
-   │
-Arduino Uno
-   │
-SIM800C GSM Module
-   │
-SMS / Call Alert
-```
 
 ---
 
-## Technology Stack
+# Technology Stack
 
-### Artificial Intelligence
+## Artificial Intelligence
 
-* PyTorch
-* TorchVision
-* OpenCV
-* Convolutional Neural Networks (CNN)
+- Python
+- PyTorch
+- TorchVision
+- OpenCV
+- Convolutional Neural Networks (CNN)
 
-### Hardware
+## Embedded Hardware
 
-* NVIDIA Jetson Nano
-* Arduino Uno
-* USB Camera
-* HC-SR04 Ultrasonic Sensor
-* SIM800C GSM Module
-* Servo Motors
+- NVIDIA Jetson Nano
+- Arduino Uno
+- USB Camera
+- HC-SR04 Ultrasonic Sensor
+- SIM800C GSM Module
+- Servo Motors
 
-### Programming Languages
+## Communication
 
-* Python
-* C/C++ (Arduino)
-
----
-
-## Experimental Results
-
-* Classification Accuracy: **89.33%**
-* Inference Time: **0.4–0.7 seconds**
-* Ultrasonic Sensor Accuracy: **±1 cm**
-* GSM Alert Delay: **4–6 seconds**
+- GSM
+- Serial Communication
 
 ---
 
-## Applications
+# Experimental Results
 
-* Smart Cities
-* Hospitals
-* Railway Stations
-* Airports
-* Shopping Malls
-* Residential Communities
-* Municipal Waste Management
+The developed prototype demonstrated reliable real-time performance.
 
----
-
-## Future Improvements
-
-* Cloud dashboard for centralized monitoring
-* Solar-powered deployment
-* Mobile application for waste collection teams
-* GPS-based optimized collection routes
-* Additional waste categories including hazardous materials
+| Metric | Result |
+|---------|--------|
+| Classification Accuracy | **89.33%** |
+| AI Inference Time | **0.4–0.7 seconds** |
+| Servo Response Time | **< 1 second** |
+| Ultrasonic Sensor Accuracy | **±1 cm** |
+| GSM Alert Delay | **4–6 seconds** |
 
 ---
 
-## Research Publication
+# Applications
 
-This project has been published as a book chapter:
+- Smart Cities
+- Municipal Waste Management
+- Hospitals
+- Railway Stations
+- Airports
+- Shopping Malls
+- Commercial Buildings
+- Residential Communities
+- Educational Campuses
+
+---
+
+# Future Improvements
+
+- Cloud-based analytics dashboard
+- AWS/ThingSpeak integration
+- Solar-powered deployment
+- Mobile application for collection teams
+- GPS-based route optimization
+- Detection of hazardous waste
+- Classification of additional waste categories
+- Real-time analytics and reporting
+
+---
+
+# Research Publication
+
+This repository accompanies our published research chapter.
+
+### Chapter Title
 
 **Design and Implementation of an AI-Enabled Waste Segregation and Monitoring System**
 
-Published in **Advances in Electronics and Communication Systems: Design, Applications, and Emerging Technologies (Volume 6, 2026).**
+### Publication Details
+
+**Book:** Advances in Electronics and Communication Systems: Design, Applications, and Emerging Technologies
+
+**Volume:** 6 (2026)
+
+**Publisher:** Iterative International Publishers (IIP)
+
+**DOI:** https://doi.org/10.58532/nbennurAECSB1P1C4
+
+**Book Chapter PDF:** [Read Here](./Chapter%20submission.pdf)
+
+### Abstract
+
+This research presents an AI-enabled smart waste segregation and monitoring system that combines Deep Learning, Computer Vision, and IoT technologies. The proposed solution automates waste classification into dry, wet, plastic, and glass categories while simultaneously monitoring dustbin fill levels and notifying municipal authorities when collection is required. The system achieved an overall classification accuracy of **89.33%**, demonstrating the potential of AI-driven waste management for smart city applications.
 
 ---
 
-## Authors
+# Authors
 
-* Priyansh Tiwari
-* Anchal Mishra
-* Ambuj Chaurasia
-* Ashwini Parouha
-* Pratik Sah
+- **Priyansh Tiwari**
+- Anchal Mishra
+- Ambuj Chaurasia
+- Ashwini Parouha
+- Pratik Sah
 
-Guided by **Prof. Neeta Nathani**
+### Research Guide
+
+**Prof. Neeta Nathani**
+
+Department of Electronics & Communication Engineering
+
+Gyan Ganga Institute of Technology & Sciences, Jabalpur
 
 ---
 
-## License
+# Citation
 
-This repository is intended for academic and educational purposes.
+If you use this project for research or academic purposes, please cite:
+
+```text
+Neeta Nathani, Priyansh Tiwari, Anchal Mishra,
+Ambuj Chaurasia, Ashwini Parouha, and Pratik Sah.
+
+Design and Implementation of an AI-Enabled Waste Segregation
+and Monitoring System.
+
+In:
+Advances in Electronics and Communication Systems:
+Design, Applications, and Emerging Technologies,
+Volume 6,
+Iterative International Publishers (IIP),
+2026.
+
+DOI: https://doi.org/10.58532/nbennurAECSB1P1C4
+```
+
+---
+
+# License
+
+This repository is intended for academic, educational, and research purposes. Please cite the published work when referencing this project.
